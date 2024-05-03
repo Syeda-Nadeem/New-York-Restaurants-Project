@@ -1,0 +1,75 @@
+*Explore Dataset*
+SELECT *
+FROM NOMNOM;
+
+*What are the distinct neighborhoods?*
+SELECT DISTINCT neighborhood
+FROM nomnom;
+
+*What are the distinct cuisine types?*
+SELECT DISTINCT cuisine
+FROM nomnom;
+
+*Chinese takeout*
+SELECT name, cuisine
+FROM nomnom
+where cuisine = 'Chinese';
+
+*Return all the restaurants with reviews of 4 and above.*
+SELECT name, cuisine , review
+FROM nomnom
+where review >= 4;
+
+Return all the restaurants that are Italian and $$$
+SELECT name, cuisine , review , price
+FROM nomnom
+where cuisine = 'Italian' AND price = '$$$'
+
+Find Italian restaurants with at least three dollar signs
+SELECT *
+FROM nomnom
+WHERE cuisine = 'Italian'
+   AND price LIKE '%$$$%';
+
+Find a resturant containts keyword meatball 
+SELECT *
+FROM nomnom
+WHERE name LIKE '%meatball%';
+
+Find all the close by spots in Midtown, Downtown or Chinatown.
+SELECT *
+FROM nomnom
+WHERE neighborhood = 'Midtown' OR 'Downtown' OR 'Chinatown';
+
+Find all the health grade pending restaurants (empty values).
+ELECT name, health
+FROM nomnom
+WHERE health IS NULL;
+
+Top 10 Restaurants Ranking based on reviews.
+SELECT name, review
+FROM nomnom
+ORDER BY review DESC
+LIMIT 10;
+
+
+Use a CASE statement to change the rating system to:
+SELECT name
+  CASE 
+    WHEN review > 4.5 THEN 'Extraordinary'
+    when review > 4 THEN 'Excellent'
+    WHEN review > 3  THEN 'Good'
+    WHEN review > 2 THEN 'Fair'
+  ELSE 'Poor'
+ END AS 'Review'
+FROM nomnom;
+
+
+
+
+
+
+
+
+
+
